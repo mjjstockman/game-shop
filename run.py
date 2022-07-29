@@ -13,28 +13,32 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('game_shop')
 
 
-def validate_data(values):
+def get_customer_name():
+    print("Hi! Welcome to Game Shop!\n")
+    while True:
+        name = input("Please enter your name:\n").lower()
+        if validate_data(name):
+            print("NAME IS SOOOOO SAFE!!!!")
+            break
+
+    return(name)
+
+
+def validate_data(name):
     try:
-        if values == "":
+        if name == "":
             raise ValueError("You must enter your name")
         else: 
-            if values[0].isnumeric():
+            if name[0].isnumeric():
                 raise ValueError("The first character of your name cannot be a number")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
-
-def welcome():
-    print("Hi! Welcome to Game Shop!\n")
-    name = input("Please enter your name:\n").lower()
-    validate_data(name)
-    # print(f"\nHi, {name.capitalize()}! Here's the games we are currently selling...")
-
-
-
-
-welcome()
+cust_name = get_customer_name()
 
 
 
