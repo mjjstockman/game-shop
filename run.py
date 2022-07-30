@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from tabulate import tabulate
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -57,7 +58,11 @@ def confirm_data(data):
         return False
     else:
         print("Input must be either a Y or N")
-        return False
+        confirm_data(data)
 
 
-cust_name = get_customer_name()
+# cust_name = get_customer_name()
+
+
+table = [["Sun",696000,1989100000],["Earth",6371,5973.6],["Moon",1737,73.5],["Mars",3390,641.85]]
+print(tabulate(table, headers=["Planet","R (km)", "mass (x 10^29 kg)"]))
