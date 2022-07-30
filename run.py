@@ -31,9 +31,8 @@ def validate_data(name):
     try:
         if name == "":
             raise ValueError("You must enter your name")
-        else: 
-            if name[0].isnumeric():
-                raise ValueError("The first character of your name cannot be a number")
+        elif name[0].isnumeric():
+            raise ValueError("The first character of your name cannot be a number")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
@@ -41,9 +40,9 @@ def validate_data(name):
     return True
 
 
-def show_goods():
-    print("\nThis is what we have to sell:\n")
-    
+# def show_goods():
+#     print("\nThis is what we have to sell:\n")
+
 
 def confirm_data(data):
     print(f"You entered {data}\n")
@@ -62,37 +61,3 @@ def confirm_data(data):
 
 
 cust_name = get_customer_name()
-# print(cust_name)
-
-
-
-
-    # while True:
-    #     if name is None:
-    #         name = input("Please enter your name:\n").lower()
-    #     elif confirm_data(name):
-    #         print(f"\nThanks {name.capitalize()}! Please choose from the following:\n")
-    #         break
-    #     else:
-    #         # print("\nInvalid choice, please try again\n")
-    #         continue
-
-
-
-# def confirm_data(data):
-#     print(f"You entered {data}\n")
-#     print("Is this correct?\n")
-#     confirm = input("Enter Y for yes, N for No:\n")
-#     confirm_strip_lcase = confirm.strip().lower()
-#     if confirm_strip_lcase == "y":
-#         print(f"You said {data} is correct!")
-#         return True
-#     elif confirm_strip_lcase == "n":
-#         print("Let's try again")
-#         return False
-#     else:
-#         print("Input must be either a Y or N")
-#         return False
-       
-
-# welcome()
