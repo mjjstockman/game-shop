@@ -14,11 +14,14 @@ SHEET = GSPREAD_CLIENT.open('game_shop')
 
 
 def get_customer_name():
-    print("Hi! Welcome to Game Shop!\n")
+    print("Hi! Welcome to Yard Sale!\n")
     while True:
         name = input("Please enter your name:\n").lower()
         if validate_data(name):
-            print("NAME IS SOOOOO SAFE!!!!")
+            if confirm_data(name):
+                print("All gd, from 22")
+            else:
+                get_customer_name()
             break
 
     return(name)
@@ -38,7 +41,29 @@ def validate_data(name):
     return True
 
 
+def show_goods():
+    print("\nThis is what we have to sell:\n")
+    
+
+def confirm_data(data):
+    print(f"You entered {data}\n")
+    print("Is this correct?\n")
+    confirm = input("Enter Y for yes, N for No:\n")
+    confirm_strip_lcase = confirm.strip().lower()
+    if confirm_strip_lcase == "y":
+        print(f"You said {data} is correct!")
+        return True
+    elif confirm_strip_lcase == "n":
+        print("Let's try again")
+        return False
+    else:
+        print("Input must be either a Y or N")
+        return False
+
+
 cust_name = get_customer_name()
+# print(cust_name)
+
 
 
 
